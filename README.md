@@ -79,3 +79,23 @@ $ poetry init
 $ source $(poetry env info --path)/bin/activate
 ```
 
+## 6. Claude Code skills / MCP
+필요: Node.js 18+, [Claude Code](https://docs.claude.com/en/docs/claude-code)
+
+```bash
+$ bash claude/install.sh
+```
+
+| 이름 | 종류 | 출처 |
+|---|---|---|
+| find-skills | skill | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
+| mcp-builder | skill | [anthropics/skills](https://github.com/anthropics/skills) |
+| design-taste-frontend (taste) | skill | [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) |
+| agent-browser | skill + CLI | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
+| gsd | skills | [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) |
+| chrome-devtools | MCP | [chrome-devtools-mcp](https://www.npmjs.com/package/chrome-devtools-mcp) |
+
+- GSD 설치 시 Claude Code statusline 설정이 덮어써짐
+- Windows: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser` 명령이 안 잡힘
+- 설치 후 Claude Code 재시작
+
