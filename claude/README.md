@@ -37,3 +37,10 @@
 | graphify | 코드·문서 폴더를 질의 가능한 지식 그래프로 만든다. |
 | claude-mem | 세션 간 작업 맥락을 압축·저장해 다음 세션에서 이어 쓴다 (bun 필요). |
 | humanize-korean | 한국어 글의 AI 티를 진단하고 자연스럽게 윤문한다. |
+| egm (Elephant-Goldfish Model) | 맥락을 다 아는 세션이 설계서를 쓰고, 맥락 없는 새 세션들이 검토하게 한다 (`/egm:`). |
+
+## Apps
+
+| 이름 | 설명 |
+|---|---|
+| Craft Anything | 웹사이트·앱·게임을 분석해 비슷한 프로젝트를 새로 만들어 주는 데스크톱 앱·CLI·MCP (알파). `~/.local/opt/craft-anything`에 설치, Claude Code 연결은 `craft-anything-cli setup --client claude_code`. |

@@ -101,8 +101,12 @@ $ bash claude/install.sh
 | graphify | plugin | [pleaseai/claude-code-plugins](https://github.com/pleaseai/claude-code-plugins) |
 | claude-mem | plugin | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) (bun 필요) |
 | humanize-korean | plugin | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) |
+| egm (Elephant-Goldfish Model) | plugin | [google/elephant-goldfish-model](https://github.com/google/elephant-goldfish-model) |
+| bun | CLI (claude-mem용) | [npm bun](https://www.npmjs.com/package/bun) |
+| Craft Anything | 앱 + CLI | [storytold/craft-anything](https://github.com/storytold/craft-anything) (macOS는 CLI만, 앱은 .dmg 수동) |
 
 - GSD 설치 시 Claude Code statusline 설정이 덮어써짐
-- Windows: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser` 명령이 안 잡힘
+- Windows: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser`·`bun` 명령이 안 잡힘 (claude-mem이 bun을 못 찾음)
+- Craft Anything은 Claude Code에 자동 연결하지 않음 → 필요 시 `craft-anything-cli setup --client claude_code`
 - 설치 후 Claude Code 재시작
 
