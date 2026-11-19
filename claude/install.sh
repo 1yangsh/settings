@@ -22,4 +22,22 @@ npx -y get-shit-done-cc@latest --claude --global
 # 4. MCP: chrome-devtools
 claude mcp add chrome-devtools --scope user -- npx -y chrome-devtools-mcp@latest
 
+# 5. 추가 skill
+skill firecrawl/anydoc --skill convert-documents-to-markdown
+mkdir -p ~/.claude/skills && cp -r "$(dirname "$0")/skills/." ~/.claude/skills/   # 직접 만든 skill
+
+# 6. Plugins (marketplace 등록 → 설치)
+for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai; do
+  claude plugin marketplace add "$repo" || true   # 이미 등록돼 있으면 통과
+done
+for p in \
+  claude-code-setup@claude-plugins-official claude-md-management@claude-plugins-official \
+  code-review@claude-plugins-official code-simplifier@claude-plugins-official \
+  context7@claude-plugins-official github@claude-plugins-official \
+  microsoft-docs@claude-plugins-official skill-creator@claude-plugins-official \
+  superpowers@claude-plugins-official \
+  ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai; do
+  claude plugin install "$p" -s user -y
+done
+
 echo "완료. Claude Code를 재시작하세요."

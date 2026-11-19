@@ -94,6 +94,13 @@ $ bash claude/install.sh
 | agent-browser | skill + CLI | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser) |
 | gsd | skills | [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) |
 | chrome-devtools | MCP | [chrome-devtools-mcp](https://www.npmjs.com/package/chrome-devtools-mcp) |
+| convert-documents-to-markdown | skill | [firecrawl/anydoc](https://github.com/firecrawl/anydoc) |
+| conventional-commits | skill | 직접 작성 (`claude/skills/`) |
+| claude-code-setup, claude-md-management, code-review, code-simplifier, context7, github, microsoft-docs, skill-creator, superpowers | plugin | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) |
+| ponytail | plugin | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) |
+| graphify | plugin | [pleaseai/claude-code-plugins](https://github.com/pleaseai/claude-code-plugins) |
+| claude-mem | plugin | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) (bun 필요) |
+| humanize-korean | plugin | [epoko77-ai/im-not-ai](https://github.com/epoko77-ai/im-not-ai) |
 
 - GSD 설치 시 Claude Code statusline 설정이 덮어써짐
 - Windows: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser` 명령이 안 잡힘
