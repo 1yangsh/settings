@@ -2,6 +2,13 @@
 
 설치: `bash install.sh` (상위 [README](../README.md#claude-code) 참고)
 
+## 기본 설정
+
+| 파일 | 설명 |
+|---|---|
+| `CLAUDE.md` | 전역 규칙. `~/.claude/CLAUDE.md`가 없을 때만 복사된다. |
+| `settings.json` | 모델·effort·테마 등 공통 기본값. `~/.claude/settings.json`에 없는 키만 채운다. |
+
 ## Skills
 
 | 이름 | 설명 |

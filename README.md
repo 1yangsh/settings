@@ -102,6 +102,13 @@ bash claude/install.sh
 
 ### 설치 항목
 
+**기본 설정** (기존 값은 덮어쓰지 않음)
+
+| 파일 | 반영 방식 | 내용 |
+|---|---|---|
+| [`claude/CLAUDE.md`](claude/CLAUDE.md) → `~/.claude/CLAUDE.md` | 파일이 **없을 때만** 복사 | 전역 규칙: 한국어 답변, 근거 기반 답변, 외부 시스템 쓰기 전 확인, 배포 전 검증 등 |
+| [`claude/settings.json`](claude/settings.json) → `~/.claude/settings.json` | **없는 키만** 채움 (`settings.json.bak` 백업) | 모델(`opus[1m]`), 모델별 effort, 테마, 자동 업데이트 채널 |
+
 **Skills**
 
 | 이름 | 출처 |
@@ -145,6 +152,25 @@ bash claude/install.sh
 | Agent-Reach | `uv tool` (GitHub 릴리스) | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) |
 | Craft Anything | OS별 릴리스 다운로드 → `~/.local/opt/craft-anything` | [storytold/craft-anything](https://github.com/storytold/craft-anything) |
 
+### 설치 후 직접 할 일
+
+| 항목 | 방법 |
+|---|---|
+| Claude 로그인 | `claude` 실행 후 `/login` |
+| github 플러그인 토큰 | 플러그인이 환경변수 `GITHUB_PERSONAL_ACCESS_TOKEN`을 Bearer 토큰으로 쓴다. 없으면 연결 실패(`Authorization header is badly formatted`). 아래처럼 설정 후 Claude Code 재시작 (미검증) |
+| Craft Anything 연결 (선택) | `craft-anything-cli setup --client claude_code` |
+| 권한 허용 목록 (선택) | 몇 번 사용한 뒤 `/fewer-permission-prompts` 실행 → 자주 쓰는 읽기 전용 명령을 허용 목록으로 추가 |
+
+```bash
+# macOS / Linux: ~/.zshrc 또는 ~/.bashrc 에 추가 (gh CLI 로그인 상태 기준)
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
+```
+
+```powershell
+# Windows: 사용자 환경변수로 저장 (gh CLI 로그인 상태 기준)
+setx GITHUB_PERSONAL_ACCESS_TOKEN "$(gh auth token)"
+```
+
 ### 주의사항
 
 - **GSD**: 설치 시 Claude Code statusline 설정을 덮어쓴다.
@@ -152,4 +178,5 @@ bash claude/install.sh
 - **prompts.chat**: 원격 MCP(`prompts.chat/api/mcp`)로 검색어가 외부에 전송된다.
 - **Agent-Reach**: PyPI의 `agent-reach`는 다른 프로젝트다. 반드시 GitHub 릴리스로 설치한다(스크립트가 처리).
 - **Craft Anything**: macOS는 CLI만 설치되며 앱(`.dmg`)은 직접 설치한다. Claude Code 연결은 자동으로 하지 않으므로 필요하면 `craft-anything-cli setup --client claude_code`를 실행한다.
+- **비밀정보 금지**: 이 레포는 공개 레포다. `~/.claude`의 `.credentials.json`, `settings.local.json`, `history.jsonl`, `projects/`(메모리 포함), 회사용 MCP 설정은 올리지 않는다(`.gitignore`에 등록).
 - **Windows**: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser`·`bun`을 찾지 못한다(claude-mem이 bun을 못 찾음). 사용자 PATH에 추가한다.

@@ -4,6 +4,25 @@
 set -euo pipefail
 
 skill() { npx -y skills add "$@" -g -a claude-code -y; }
+HERE="$(cd "$(dirname "$0")" && pwd)"
+
+# 0. 기본 설정: CLAUDE.md는 없을 때만 복사, settings.json은 없는 키만 채움(기존 값 유지)
+mkdir -p ~/.claude
+[ -f ~/.claude/CLAUDE.md ] || cp "$HERE/CLAUDE.md" ~/.claude/CLAUDE.md
+node - "$HERE/settings.json" "$HOME/.claude/settings.json" <<'JS'
+const fs = require('fs');
+const [base, target] = process.argv.slice(2);
+const read = f => fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8').trimStart()) : {};
+const fill = (dst, src) => {
+  for (const [k, v] of Object.entries(src)) {
+    if (!(k in dst)) dst[k] = v;
+    else if (v && typeof v === 'object' && !Array.isArray(v) && dst[k] && typeof dst[k] === 'object') fill(dst[k], v);
+  }
+  return dst;
+};
+if (fs.existsSync(target)) fs.copyFileSync(target, target + '.bak');
+fs.writeFileSync(target, JSON.stringify(fill(read(target), read(base)), null, 2) + '\n');
+JS
 
 # 1. Skills (~/.claude/skills 에 설치)
 skill vercel-labs/skills --skill find-skills
@@ -25,7 +44,7 @@ claude mcp add chrome-devtools --scope user -- npx -y chrome-devtools-mcp@latest
 # 5. 추가 skill
 skill firecrawl/anydoc --skill convert-documents-to-markdown
 skill remotion-dev/skills   # Remotion 영상 제작 스킬 묶음
-mkdir -p ~/.claude/skills && cp -r "$(dirname "$0")/skills/." ~/.claude/skills/   # 직접 만든 skill
+mkdir -p ~/.claude/skills && cp -r "$HERE/skills/." ~/.claude/skills/   # 직접 만든 skill
 
 # 6. bun (claude-mem 의존성 설치에 필요. npm 11은 postinstall 허용 플래그 필요)
 npm i -g --allow-scripts=bun bun

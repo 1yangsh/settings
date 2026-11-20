@@ -1,1 +1,13 @@
 .idea
+.DS_Store
+.env
+.env.*
+
+# Claude Code: 비밀정보·개인 기록은 올리지 않음
+.credentials.json
+settings.local.json
+*.local.json
+history.jsonl
+projects/
+sessions/
+settings.json.bak

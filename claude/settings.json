@@ -1,0 +1,9 @@
+{
+  "model": "opus[1m]",
+  "modelSettings": {
+    "claude-sonnet-5": { "effortLevel": "high" },
+    "claude-opus-5": { "effortLevel": "medium" }
+  },
+  "theme": "dark",
+  "autoUpdatesChannel": "latest"
+}
