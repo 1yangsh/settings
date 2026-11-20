@@ -1,6 +1,6 @@
 # Claude Code skills / plugins
 
-설치: `bash install.sh` (상위 README 6번 참고)
+설치: `bash install.sh` (상위 [README](../README.md#claude-code) 참고)
 
 ## Skills
 
@@ -13,6 +13,7 @@
 | gsd (get-shit-done) | 프로젝트를 페이즈 단위로 기획→계획→실행→검증하는 스펙 기반 개발 워크플로우 (`/gsd-help`). |
 | convert-documents-to-markdown | Word·PowerPoint·Excel·PDF·EPUB 등을 Markdown으로 변환한다. |
 | conventional-commits | Conventional Commits 규약으로 커밋 메시지를 작성·검토한다 (직접 작성, `skills/`). |
+| remotion-* | React 코드로 영상을 만드는 Remotion 스킬 묶음 (생성·자막·렌더·미리보기 등 13개). |
 
 ## MCP
 
@@ -38,9 +39,16 @@
 | claude-mem | 세션 간 작업 맥락을 압축·저장해 다음 세션에서 이어 쓴다 (bun 필요). |
 | humanize-korean | 한국어 글의 AI 티를 진단하고 자연스럽게 윤문한다. |
 | egm (Elephant-Goldfish Model) | 맥락을 다 아는 세션이 설계서를 쓰고, 맥락 없는 새 세션들이 검토하게 한다 (`/egm:`). |
+| hyperframes | HTML·CSS로 영상을 만들고 렌더링하는 HeyGen HyperFrames 스킬. |
+| impeccable | 프론트엔드 디자인 품질을 점검·개선하는 명령 모음 (`/impeccable`). |
+| prompts.chat | prompts.chat의 공개 프롬프트·스킬을 검색해 가져온다 (원격 MCP `prompts.chat/api/mcp`). |
+| ecc (everything-claude-code) | 에이전트·스킬·명령·훅을 한데 묶은 대형 세트. 자체 훅이 켜지므로 `/plugin configure ecc@ecc`로 조절. |
 
-## Apps
+## Apps / CLI
 
 | 이름 | 설명 |
 |---|---|
+| bun | claude-mem 의존성 설치에 필요한 JS 런타임 (npm 전역 설치). |
+| MarkItDown | Microsoft 공식 문서→Markdown 변환 CLI `markitdown` (uv tool). |
+| Agent-Reach | GitHub·YouTube·Reddit 등을 읽기 전용으로 검색·조회하는 CLI + 스킬 (uv tool, GitHub 릴리스). |
 | Craft Anything | 웹사이트·앱·게임을 분석해 비슷한 프로젝트를 새로 만들어 주는 데스크톱 앱·CLI·MCP (알파). `~/.local/opt/craft-anything`에 설치, Claude Code 연결은 `craft-anything-cli setup --client claude_code`. |

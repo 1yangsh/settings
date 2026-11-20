@@ -24,13 +24,14 @@ claude mcp add chrome-devtools --scope user -- npx -y chrome-devtools-mcp@latest
 
 # 5. 추가 skill
 skill firecrawl/anydoc --skill convert-documents-to-markdown
+skill remotion-dev/skills   # Remotion 영상 제작 스킬 묶음
 mkdir -p ~/.claude/skills && cp -r "$(dirname "$0")/skills/." ~/.claude/skills/   # 직접 만든 skill
 
 # 6. bun (claude-mem 의존성 설치에 필요. npm 11은 postinstall 허용 플래그 필요)
 npm i -g --allow-scripts=bun bun
 
 # 7. Plugins (marketplace 등록 → 설치)
-for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1; do
+for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1 \n            heygen-com/hyperframes pbakaus/impeccable f/prompts.chat affaan-m/everything-claude-code; do
   claude plugin marketplace add "$repo" || true   # 이미 등록돼 있으면 통과
 done
 for p in \
@@ -39,7 +40,7 @@ for p in \
   context7@claude-plugins-official github@claude-plugins-official \
   microsoft-docs@claude-plugins-official skill-creator@claude-plugins-official \
   superpowers@claude-plugins-official \
-  ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm; do
+  ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm \n  hyperframes@hyperframes impeccable@impeccable prompts.chat@prompts.chat ecc@ecc; do
   claude plugin install "$p" -s user -y
 done
 
@@ -69,5 +70,18 @@ if [ -n "$CA_FILE" ]; then
   rm -rf "$CA_TMP"
   echo "Craft Anything 설치: $CA_DIR"
 fi
+
+# 9. Python CLI (uv tool): MarkItDown, Agent-Reach
+if ! command -v uv >/dev/null; then
+  case "$(uname -s)" in
+    MINGW*|MSYS*) powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex" ;;
+    *)            curl -LsSf https://astral.sh/uv/install.sh | sh ;;
+  esac
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+uv tool install 'markitdown[all]'
+# PyPI의 agent-reach는 다른 프로젝트 → 반드시 GitHub 릴리스로 설치
+uv tool install https://github.com/Panniantong/Agent-Reach/releases/latest/download/agent-reach.zip
+"$(uv tool dir --bin)/agent-reach" setup >/dev/null   # 기본 채널 + Claude 스킬 등록 (JSON 출력 생략)
 
 echo "완료. Claude Code를 재시작하세요."
