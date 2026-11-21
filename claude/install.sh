@@ -50,7 +50,8 @@ mkdir -p ~/.claude/skills && cp -r "$HERE/skills/." ~/.claude/skills/   # 직접
 npm i -g --allow-scripts=bun bun
 
 # 7. Plugins (marketplace 등록 → 설치)
-for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1 \n            heygen-com/hyperframes pbakaus/impeccable f/prompts.chat affaan-m/everything-claude-code; do
+for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1 \
+            heygen-com/hyperframes pbakaus/impeccable f/prompts.chat affaan-m/everything-claude-code; do
   claude plugin marketplace add "$repo" || true   # 이미 등록돼 있으면 통과
 done
 for p in \
@@ -59,7 +60,8 @@ for p in \
   context7@claude-plugins-official github@claude-plugins-official \
   microsoft-docs@claude-plugins-official skill-creator@claude-plugins-official \
   superpowers@claude-plugins-official \
-  ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm \n  hyperframes@hyperframes impeccable@impeccable prompts.chat@prompts.chat ecc@ecc; do
+  ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm \
+  hyperframes@hyperframes impeccable@impeccable prompts.chat@prompts.chat ecc@ecc; do
   claude plugin install "$p" -s user -y
 done
 
