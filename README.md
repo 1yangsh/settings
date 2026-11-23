@@ -120,7 +120,6 @@ bash claude/install.sh
 | gsd | [gsd-build/get-shit-done](https://github.com/gsd-build/get-shit-done) |
 | convert-documents-to-markdown | [firecrawl/anydoc](https://github.com/firecrawl/anydoc) |
 | remotion-* | [remotion-dev/skills](https://github.com/remotion-dev/skills) |
-| eli5 | [DreambigOu/ELI5](https://github.com/DreambigOu/ELI5) |
 | conventional-commits | 직접 작성 ([`claude/skills/`](claude/skills)) |
 
 **Plugins**
@@ -139,6 +138,7 @@ bash claude/install.sh
 | ecc (everything-claude-code) | [affaan-m/ECC](https://github.com/affaan-m/ECC) |
 | andrej-karpathy-skills (karpathy-guidelines) | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) |
 | caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
+| eli5 | [anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community) |
 
 **MCP**
 

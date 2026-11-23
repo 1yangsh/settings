@@ -21,7 +21,6 @@
 | convert-documents-to-markdown | Word·PowerPoint·Excel·PDF·EPUB 등을 Markdown으로 변환한다. |
 | conventional-commits | Conventional Commits 규약으로 커밋 메시지를 작성·검토한다 (직접 작성, `skills/`). |
 | remotion-* | React 코드로 영상을 만드는 Remotion 스킬 묶음 (생성·자막·렌더·미리보기 등 13개). |
-| eli5 | 듣는 사람(5살·관리자·엔지니어·부모 등) 수준에 맞춰 개념·코드·에러를 쉽게 설명한다. |
 
 ## MCP
 
@@ -53,6 +52,7 @@
 | ecc (everything-claude-code) | 에이전트·스킬·명령·훅을 한데 묶은 대형 세트. 자체 훅이 켜지므로 `/plugin configure ecc@ecc`로 조절. |
 | andrej-karpathy-skills (karpathy-guidelines) | 과한 구현·넓은 수정·숨은 가정을 줄이는 코딩 행동 지침 (먼저 생각, 단순하게, 필요한 곳만 수정, 검증 기준 정의). |
 | caveman | 군말을 빼고 짧게 답하게 하는 모드. 코드·명령·에러 원문은 그대로 둔다 (`/caveman`). 세션 시작 훅이 켜진다. |
+| eli5 | 주제를 아무것도 모르는 사람에게 설명하듯, 큰 그림과 적은 글의 HTML 페이지로 풀어 준다 (`/eli5 <주제>`). |
 
 ## Apps / CLI
 

@@ -44,7 +44,6 @@ claude mcp add chrome-devtools --scope user -- npx -y chrome-devtools-mcp@latest
 # 5. 추가 skill
 skill firecrawl/anydoc --skill convert-documents-to-markdown
 skill remotion-dev/skills   # Remotion 영상 제작 스킬 묶음
-skill DreambigOu/ELI5 --skill eli5
 mkdir -p ~/.claude/skills && cp -r "$HERE/skills/." ~/.claude/skills/   # 직접 만든 skill
 
 # 6. bun (claude-mem 의존성 설치에 필요. npm 11은 postinstall 허용 플래그 필요)
@@ -53,7 +52,7 @@ npm i -g --allow-scripts=bun bun
 # 7. Plugins (marketplace 등록 → 설치)
 for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1 \
             heygen-com/hyperframes pbakaus/impeccable f/prompts.chat affaan-m/everything-claude-code \
-            multica-ai/andrej-karpathy-skills JuliusBrussee/caveman; do
+            multica-ai/andrej-karpathy-skills JuliusBrussee/caveman anthropics/claude-plugins-community; do
   claude plugin marketplace add "$repo" || true   # 이미 등록돼 있으면 통과
 done
 for p in \
@@ -64,7 +63,7 @@ for p in \
   superpowers@claude-plugins-official \
   ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm \
   hyperframes@hyperframes impeccable@impeccable prompts.chat@prompts.chat ecc@ecc \
-  andrej-karpathy-skills@karpathy-skills caveman@caveman; do
+  andrej-karpathy-skills@karpathy-skills caveman@caveman eli5@claude-community; do
   claude plugin install "$p" -s user -y
 done
 
