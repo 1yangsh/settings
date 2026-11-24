@@ -38,8 +38,9 @@ AB=$(command -v agent-browser || echo "$(npm prefix -g)/agent-browser.cmd")  # W
 # 3. GSD (get-shit-done) — 상태줄(statusline) 설정도 덮어씀
 npx -y get-shit-done-cc@latest --claude --global
 
-# 4. MCP: chrome-devtools
+# 4. MCP: chrome-devtools, playwright
 claude mcp add chrome-devtools --scope user -- npx -y chrome-devtools-mcp@latest
+claude mcp add playwright --scope user -- npx -y @playwright/mcp@latest
 
 # 5. 추가 skill
 skill firecrawl/anydoc --skill convert-documents-to-markdown
@@ -52,9 +53,12 @@ npm i -g --allow-scripts=bun bun
 # 7. Plugins (marketplace 등록 → 설치)
 for repo in anthropics/claude-plugins-official DietrichGebert/ponytail pleaseai/claude-code-plugins thedotmack/claude-mem epoko77-ai/im-not-ai google/elephant-goldfish-model#v0.1.1 \
             heygen-com/hyperframes pbakaus/impeccable f/prompts.chat affaan-m/everything-claude-code \
-            multica-ai/andrej-karpathy-skills JuliusBrussee/caveman anthropics/claude-plugins-community; do
+            multica-ai/andrej-karpathy-skills JuliusBrussee/caveman anthropics/claude-plugins-community \
+            chaseai-yt/claudex-loop mvanhorn/last30days-skill; do
   claude plugin marketplace add "$repo" || true   # 이미 등록돼 있으면 통과
 done
+# hyperframes 마켓플레이스는 Git LFS를 쓴다. git-lfs(brew) 필요, 없으면 LFS 포인터 파일만 받아진다
+git -C "$HOME/.claude/plugins/marketplaces/hyperframes" lfs pull 2>/dev/null || true
 for p in \
   claude-code-setup@claude-plugins-official claude-md-management@claude-plugins-official \
   code-review@claude-plugins-official code-simplifier@claude-plugins-official \
@@ -63,7 +67,8 @@ for p in \
   superpowers@claude-plugins-official \
   ponytail@ponytail graphify@pleaseai claude-mem@thedotmack humanize-korean@im-not-ai egm@egm \
   hyperframes@hyperframes impeccable@impeccable prompts.chat@prompts.chat ecc@ecc \
-  andrej-karpathy-skills@karpathy-skills caveman@caveman eli5@claude-community; do
+  andrej-karpathy-skills@karpathy-skills caveman@caveman eli5@claude-community \
+  claudex-loop@claudex-loop last30days@last30days-skill; do
   claude plugin install "$p" -s user -y
 done
 

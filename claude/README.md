@@ -27,6 +27,7 @@
 | 이름 | 설명 |
 |---|---|
 | chrome-devtools | Chrome DevTools로 브라우저를 조작·디버깅·성능 측정한다. |
+| playwright | Playwright로 브라우저를 조작한다. 접근성 스냅샷 기반으로 페이지를 읽고 클릭·입력한다 (`@playwright/mcp`). |
 
 ## Plugins
 
@@ -53,6 +54,8 @@
 | andrej-karpathy-skills (karpathy-guidelines) | 과한 구현·넓은 수정·숨은 가정을 줄이는 코딩 행동 지침 (먼저 생각, 단순하게, 필요한 곳만 수정, 검증 기준 정의). |
 | caveman | 군말을 빼고 짧게 답하게 하는 모드. 코드·명령·에러 원문은 그대로 둔다 (`/caveman`). 세션 시작 훅이 켜진다. |
 | eli5 | 주제를 아무것도 모르는 사람에게 설명하듯, 큰 그림과 적은 글의 HTML 페이지로 풀어 준다 (`/eli5 <주제>`). |
+| claudex-loop | Claude Code와 Codex 두 모델이 계획을 검토·다듬은 뒤 서로 역할을 바꿔 구현·검사하는 워크플로우 (`/claudex-loop:claudex-loop`). Codex CLI 필요. |
+| last30days | 최근 30일간 Reddit·X·YouTube·Hacker News 등을 조사해 출처가 붙은 요약을 만든다 (`/last30days <주제>`). |
 
 ## Apps / CLI
 
@@ -61,4 +64,5 @@
 | bun | claude-mem 의존성 설치에 필요한 JS 런타임 (npm 전역 설치). |
 | MarkItDown | Microsoft 공식 문서→Markdown 변환 CLI `markitdown` (uv tool). |
 | Agent-Reach | GitHub·YouTube·Reddit 등을 읽기 전용으로 검색·조회하는 CLI + 스킬 (uv tool, GitHub 릴리스). |
+| git-lfs | Git LFS 파일을 내려받는 도구. hyperframes 플러그인 설치에 필요하다 (`brew install git-lfs`). |
 | Craft Anything | 웹사이트·앱·게임을 분석해 비슷한 프로젝트를 새로 만들어 주는 데스크톱 앱·CLI·MCP (알파). `~/.local/opt/craft-anything`에 설치, Claude Code 연결은 `craft-anything-cli setup --client claude_code`. |

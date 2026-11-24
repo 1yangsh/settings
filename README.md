@@ -139,12 +139,15 @@ bash claude/install.sh
 | andrej-karpathy-skills (karpathy-guidelines) | [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) |
 | caveman | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) |
 | eli5 | [anthropics/claude-plugins-community](https://github.com/anthropics/claude-plugins-community) |
+| claudex-loop | [chaseai-yt/claudex-loop](https://github.com/chaseai-yt/claudex-loop) |
+| last30days | [mvanhorn/last30days-skill](https://github.com/mvanhorn/last30days-skill) |
 
 **MCP**
 
 | 이름 | 출처 |
 |---|---|
 | chrome-devtools | [chrome-devtools-mcp](https://www.npmjs.com/package/chrome-devtools-mcp) |
+| playwright | [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp) |
 
 **CLI · 앱**
 
@@ -153,6 +156,7 @@ bash claude/install.sh
 | bun | npm 전역 (claude-mem 의존성용) | [npm bun](https://www.npmjs.com/package/bun) |
 | MarkItDown | `uv tool` | [microsoft/markitdown](https://github.com/microsoft/markitdown) |
 | Agent-Reach | `uv tool` (GitHub 릴리스) | [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) |
+| git-lfs | `brew` (Brewfile) | [git-lfs](https://github.com/git-lfs/git-lfs) |
 | Craft Anything | OS별 릴리스 다운로드 → `~/.local/opt/craft-anything` | [storytold/craft-anything](https://github.com/storytold/craft-anything) |
 
 ### 설치 후 직접 할 일
@@ -180,6 +184,7 @@ setx GITHUB_PERSONAL_ACCESS_TOKEN "$(gh auth token)"
 - **ECC**: 자체 훅(`standard` 프로필)이 켜진다. 다른 플러그인 훅과 겹치면 `/plugin configure ecc@ecc`에서 끈다.
 - **prompts.chat**: 원격 MCP(`prompts.chat/api/mcp`)로 검색어가 외부에 전송된다.
 - **Agent-Reach**: PyPI의 `agent-reach`는 다른 프로젝트다. 반드시 GitHub 릴리스로 설치한다(스크립트가 처리).
+- **git-lfs**: hyperframes 마켓플레이스가 Git LFS를 쓴다. `git-lfs`가 없으면 `git`이 LFS 필터를 강제해 마켓플레이스 등록이 실패하므로, 먼저 설치한다(Brewfile 포함). 설치 스크립트가 `lfs pull`을 실행한다.
 - **Craft Anything**: macOS는 CLI만 설치되며 앱(`.dmg`)은 직접 설치한다. Claude Code 연결은 자동으로 하지 않으므로 필요하면 `craft-anything-cli setup --client claude_code`를 실행한다.
 - **비밀정보 금지**: 이 레포는 공개 레포다. `~/.claude`의 `.credentials.json`, `settings.local.json`, `history.jsonl`, `projects/`(메모리 포함), 회사용 MCP 설정은 올리지 않는다(`.gitignore`에 등록).
 - **Windows**: npm 전역 경로(`%APPDATA%\npm`)가 PATH에 없으면 `agent-browser`·`bun`을 찾지 못한다(claude-mem이 bun을 못 찾음). 사용자 PATH에 추가한다.
